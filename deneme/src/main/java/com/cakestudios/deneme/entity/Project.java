@@ -1,6 +1,7 @@
 package com.cakestudios.deneme.entity;
 
 
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -13,7 +14,7 @@ public class Project extends BaseEntity {
     @Column(name = "project_code", unique = true)
     private String projectcode;
     @Column(name = "project_name", length = 1000)
-    private String progectname;
+    private String projectname;
     @JoinColumn(name = "user_manager_id")
     @ManyToOne(optional = true, fetch = FetchType.LAZY)
     private User manager;
@@ -24,7 +25,7 @@ public class Project extends BaseEntity {
     public Project(Long id, String projectcode, String progectname, User manager) {
         this.id = id;
         this.projectcode = projectcode;
-        this.progectname = progectname;
+        this.projectname = progectname;
         this.manager = manager;
     }
 
@@ -33,7 +34,7 @@ public class Project extends BaseEntity {
         return "Project{" +
                 "id=" + id +
                 ", projectcode='" + projectcode + '\'' +
-                ", progectname='" + progectname + '\'' +
+                ", progectname='" + projectname + '\'' +
                 ", manager=" + manager +
                 '}';
     }
@@ -45,13 +46,13 @@ public class Project extends BaseEntity {
         Project project = (Project) o;
         return id == project.id &&
                 Objects.equals(projectcode, project.projectcode) &&
-                Objects.equals(progectname, project.progectname) &&
+                Objects.equals(projectname, project.projectname) &&
                 Objects.equals(manager, project.manager);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, projectcode, progectname, manager);
+        return Objects.hash(id, projectcode, projectname, manager);
     }
 
     public User getManager() {
@@ -79,11 +80,11 @@ public class Project extends BaseEntity {
         this.projectcode = projectcode;
     }
 
-    public String getProgectname() {
-        return progectname;
+    public String getProjectname() {
+        return projectname;
     }
 
-    public void setProgectname(String progectname) {
-        this.progectname = progectname;
+    public void setProjectname(String projectname) {
+        this.projectname = projectname;
     }
 }

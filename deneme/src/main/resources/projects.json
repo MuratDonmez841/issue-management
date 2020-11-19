@@ -1,0 +1,17 @@
+[
+ {
+    "_class": "com.cakestudios.deneme.entity.Project",
+    "projectcode": "IM",
+    "projectname": "Issue Management Project"
+  },
+  {
+    "_class": "com.cakestudios.deneme.entity.Project",
+    "projectcode": "ERP-S",
+    "projectname": "ERP Project for Sales"
+  },
+  {
+    "_class": "com.cakestudios.deneme.entity.Project",
+    "projectcode": "CRM-s",
+    "projectname": "CRM Project for Sales"
+  }
+]

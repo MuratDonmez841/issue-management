@@ -1,17 +1,40 @@
 package com.cakestudios.deneme.dto;
 
 import com.cakestudios.deneme.entity.IssureStatus;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Date;
-
+@ApiModel(value = "IssueEntity Data Transfer Object")
 public class IssueDto {
+    @ApiModelProperty(value = "ID Of Issue")
     private Long id;
+    @ApiModelProperty(value = "Description Of Issue")
     private String Description;
+    @ApiModelProperty(value = "Details Of Issue")
     private String Details;
+    @ApiModelProperty(value = "Date Of Issue")
     private Date date;
+    @ApiModelProperty(value = "İssueStatus Of Issue")
     private IssureStatus issureStatus;
+    @ApiModelProperty(value = "UserDto Of Issue")
     private UserDto userDto;
+    @ApiModelProperty(value = "ProjectDto Of Issue")
     private ProjectDto project;
+
+
+    public IssueDto() {
+    }
+
+    public IssueDto(Long id, String description, String details, Date date, IssureStatus issureStatus, UserDto userDto, ProjectDto project) {
+        this.id = id;
+        Description = description;
+        Details = details;
+        this.date = date;
+        this.issureStatus = issureStatus;
+        this.userDto = userDto;
+        this.project = project;
+    }
 
     public Long getId() {
         return id;

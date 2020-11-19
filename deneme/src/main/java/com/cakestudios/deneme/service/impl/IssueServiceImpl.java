@@ -2,7 +2,9 @@ package com.cakestudios.deneme.service.impl;
 
 import com.cakestudios.deneme.Repostory.IssueRepostory;
 import com.cakestudios.deneme.dto.IssueDto;
+import com.cakestudios.deneme.dto.ProjectDto;
 import com.cakestudios.deneme.entity.IssueEntity;
+import com.cakestudios.deneme.entity.Project;
 import com.cakestudios.deneme.service.IssueService;
 import com.cakestudios.deneme.util.Tpage;
 import org.modelmapper.ModelMapper;
@@ -36,7 +38,8 @@ public class IssueServiceImpl implements IssueService {
 
     @Override
     public IssueDto getById(Long id) {
-        return null;
+        IssueEntity issueEntity = issueRepostory.getOne(id);
+        return modelMapper.map(issueEntity, IssueDto.class);
     }
 
     @Override
@@ -49,7 +52,28 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
-    public Boolean delete(IssueDto issueEntity) {
-        return null;
+    public Boolean delete(Long id) {
+        try {
+            issueRepostory.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Project id not found!");
+        }
+
+    }
+
+    @Override
+    public IssueDto update(Long id, IssueDto issueDto) {
+        IssueEntity issueEntity = issueRepostory.getOne(id);
+        if (issueEntity == null) {
+            throw new IllegalArgumentException("Project does not exist!" + id);
+        }
+
+        issueEntity.setIssureStatus(issueDto.getIssureStatus());
+        issueEntity.setDescription(issueDto.getDescription());
+        issueEntity.setDetails(issueDto.getDetails());
+
+        issueRepostory.save(issueEntity);
+        return modelMapper.map(issueEntity, IssueDto.class);
     }
 }
